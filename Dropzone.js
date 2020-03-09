@@ -7,13 +7,24 @@ const Dropzone = ({ onDrop, accept }) => {
     /*can do something with files here */
   }, []);
 
+  /* Example of how to set styles/classname based on dragActive
+  
+  const getClassName = (className, isActive) => {
+    if (!isActive) return className;
+    return `${className} ${className}-active`;
+  }
+
+  <div className={getClassName('dropzone', isDragActive)} {...getRootProps()}></div>
+  
+  */
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept
   });
 
   return (
-    <div {getRootProps()}>
+    <div {...getRootProps()}>
       <input className="dropzone-input" {...getInputProps()} />
       <div className="text-center">
         {isDragActive ? (
