@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import cuid from 'cuid';
 import Dropzone from './Dropzone';
+import DataList from './DataList';
 import Data from './fileData';
 
 import './App.css';
@@ -46,6 +47,7 @@ function App() {
       <h1 className="text-center">Drag Example with Drop capabilities</h1>
       <Dropzone onDrop={onDrop} accept={"images/*"} />
       <button onClick={viewState}>viewState</button>
+      <DataList datai={data} />
     </main>
   )
 }
