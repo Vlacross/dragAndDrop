@@ -3,9 +3,9 @@ import { useDropzone } from 'react-dropzone';
 
 const Dropzone = ({ onDrop, accept }) => {
 
-  const onDrop = useCallback(acceptedFiles => {
-    /*can do something with files here */
-  }, []);
+  // const onDrop = useCallback(acceptedFiles => {
+  //   /*can do something with files here */
+  // }, []);
 
   /* Example of how to set styles/classname based on dragActive
   
