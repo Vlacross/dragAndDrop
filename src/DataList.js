@@ -4,7 +4,7 @@ import { useDrag, useDrop } from 'react-dnd';
 
 const type = "Image";
 
-const Data = ({ data, index }) => {
+const Data = ({ data, index, moveData }) => {
   const ref = useRef(null);
 
   const [ collectedProps, drop ] = useDrop({
@@ -16,6 +16,18 @@ const Data = ({ data, index }) => {
                               even if 'canDrop()' is defined and returns false (You can check 'monitor.canDrop() to check this case').  
         src: https://react-dnd.github.io/react-dnd/docs/api/use-drop
       */
+     if(!ref.current) {
+       return;
+     }
+     const dragIndex = item.index;
+     const hoverIndex = index;
+     if (dragIndex === hoverIndex) {
+       return;
+     }
+
+     moveData(dragIndex, hoverIndex);
+
+     item.index = hoverIndex;
     }
   });
 
@@ -42,13 +54,15 @@ const Data = ({ data, index }) => {
   );
 };
 
-const DataList = ({ datai }) => {
+const DataList = ({ datai, moveData }) => {
 
   const renderData = (data, index) => {
     return (
       <Data
         data={data}
+        index={index}
         key={`${data.id}-data`}
+        moveData={moveData}
         />
     );
   };
