@@ -1,4 +1,6 @@
 import React, { useState, useCallback } from 'react';
+import { DndProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-htmla5-backend';
 import cuid from 'cuid';
 import Dropzone from './Dropzone';
 import DataList from './DataList';
@@ -47,7 +49,9 @@ function App() {
       <h1 className="text-center">Drag Example with Drop capabilities</h1>
       <Dropzone onDrop={onDrop} accept={'images/*'} />
       <button onClick={viewState}>viewState</button>
-      <DataList datai={data} />
+      <DndProvider backend={HTML5Backend}>
+        <DataList datai={data} />
+      </DndProvider>
     </main>
   )
 }
