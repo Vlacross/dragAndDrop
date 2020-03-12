@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { DndProvider } from 'react-dnd';
-import HTML5Backend from 'react-dnd-htmla5-backend';
+import HTML5Backend from 'react-dnd-html5-backend';
 import cuid from 'cuid';
 import Dropzone from './Dropzone';
 import DataList from './DataList';
@@ -22,7 +22,7 @@ function App() {
       'rejectedFiles': rejectedFiles
     })
 
-    rejectedFiles.map(file => {
+    acceptedFiles.map(file => {
 
       const reader = new FileReader();
 
@@ -47,7 +47,7 @@ function App() {
   return (
     <main className="App">
       <h1 className="text-center">Drag Example with Drop capabilities</h1>
-      <Dropzone onDrop={onDrop} accept={'images/*'} />
+      <Dropzone onDrop={onDrop} accept={'image/*'} />
       <button onClick={viewState}>viewState</button>
       <DndProvider backend={HTML5Backend}>
         <DataList datai={data} />
